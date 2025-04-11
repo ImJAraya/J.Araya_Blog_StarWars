@@ -1,0 +1,13 @@
+.dropdown-menu {
+    inset: auto !important;
+    left: auto !important;
+    right: 0;
+  }
+  
+  .custom-dropdown-menu {
+    right: 0;
+    left: auto;
+    min-width: 200px; /* puedes ajustar según necesites */
+    transform: translateX(-60%);
+  }
+  
