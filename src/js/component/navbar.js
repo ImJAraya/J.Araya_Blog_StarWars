@@ -17,7 +17,9 @@ export const Navbar = () => {
 		const url = item.url || item.properties.url;
 		const seccion = url.split("/api/")[1].split("/")[0];
 		actions.guardarDetalleActual(item, seccion)
+		actions.guardarLlave(seccion) // 👈 ESTA ES LA QUE USÁS PARA QUE DetalleFilms FUNCIONE
 		navigate(`/Detalle/${seccion}`)
+
 		setShowDropdown(false);
 	}
 	return (
@@ -31,7 +33,7 @@ export const Navbar = () => {
 						className="btn btn-secondary"
 						onClick={() => setShowDropdown(!showDropdown)}
 					>
-						Favoritos
+						{store.favoritos.length} Favoritos
 					</button>
 
 					{showDropdown && (

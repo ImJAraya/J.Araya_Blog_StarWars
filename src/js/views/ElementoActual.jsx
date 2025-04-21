@@ -13,6 +13,10 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 const ElementoActual = ({ onClick, img, title, onClickIcono }) => {
   const { store, actions } = useContext(Context);
   const { index } = useParams();
+  const isFavorito = store.favoritos.some(fav =>
+    (fav.url || fav.properties?.url) === (detalle.url || detalle.properties?.url)
+  );
+
 
   return (
     <div className="">

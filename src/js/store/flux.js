@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			starships: {},
 			vehicles: {},
 			detalleActual: {},
+			llave: "",
 			favoritos: []
 		},
 		actions: {
@@ -83,7 +84,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			guardarDetalleActual: (detalle, seccion) => {
-				setStore({ ...getStore(), detalleActual: [seccion, detalle] })
+				setStore({
+					...getStore(),
+					detalleActual: {
+						[seccion]: { ...detalle } // nueva referencia => React lo detecta
+					}
+				});
+			},
+			guardarLlave: (llave) => {
+				setStore({ ...getStore(), llave: llave })
 			},
 			guardarFavorito: (detalle) => {
 				const store = getStore();
@@ -113,9 +122,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const nuevosFavoritos = store.favoritos.filter((_, i) => i !== index);
 				setStore({ ...store, favoritos: nuevosFavoritos });
 			}
-			
+
 		}
 	};
 };
 
 export default getState;
+// export default getState;
+// guardarDetalleActual: (detalle, seccion) => {
+// 	setStore({
+// 		...getStore(),
+// 		detalleActual: {
+// 			[seccion]: { ...detalle } // nueva referencia => React lo detecta
+// 		}
+// 	});
+// },
+// guardarLLave: (llave) => {
+// 	setStore({ ...getStore(), llave: llave })
+// }

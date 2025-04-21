@@ -8,9 +8,10 @@ const DetallesPeople = () => {
     const [info, setInfo] = useState([]);
 
     useEffect(() => {
-        const url = store.detalleActual[1]?.url;
+        setInfo([])
+        const url = store.detalleActual[store.llave]?.url;
         actions.loadDetalles(url, setInfo)
-    }, [])
+    }, [store.detalleActual[store.llave]?.url])
 
     return (
         <div>

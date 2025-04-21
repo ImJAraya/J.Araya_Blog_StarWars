@@ -7,10 +7,11 @@ const DetallesSpecies = () => {
     const [info, setInfo] = useState([]);
     const [homeworldName, setHomeworldName] = useState("");
 
-    useEffect(() => {
-        const url = store.detalleActual[1]?.url;
-        actions.loadDetalles(url, setInfo);
-        }, []);
+  useEffect(() => {
+    setInfo([])
+    const url = store.detalleActual[store.llave]?.url;
+    actions.loadDetalles(url, setInfo);
+  }, [store.detalleActual[store.llave]?.url]);
 
     useEffect(() => {
         if (info.length > 0 && info[0].homeworld) {

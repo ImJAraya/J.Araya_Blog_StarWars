@@ -39,6 +39,7 @@ export const Home = () => {
 		 							className="card-item" 
 		 							onClick={() => {
 		 								actions.guardarDetalleActual(ele[1],[key])
+										actions.guardarLlave([key])
 										navigate(`/Detalle/${[key]}`)
 		 							}} 
 		 							key={index2} />

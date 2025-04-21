@@ -12,18 +12,25 @@ const DetalleFilms = () => {
     const [planets, setPlanets] = useState([])
     
     useEffect(() => {
-        const characters = store.detalleActual[1]?.properties.characters;
-        const species = store.detalleActual[1]?.properties.species;
-        const starships = store.detalleActual[1]?.properties.starships;
-        const vehicles = store.detalleActual[1]?.properties.vehicles;
-        const planets = store.detalleActual[1]?.properties.planets;
+        const characters = store.detalleActual[store.llave]?.properties.characters;
+        const species = store.detalleActual[store.llave]?.properties.species;
+        const starships = store.detalleActual[store.llave]?.properties.starships;
+        const vehicles = store.detalleActual[store.llave]?.properties.vehicles;
+        const planets = store.detalleActual[store.llave]?.properties.planets;
+
+        setNombres([]);
+        setEspecies([]);
+        setStarships([]);
+        setVehicles([]);
+        setPlanets([]);
+    
 
         actions.forParaLLenar(characters, setNombres, "name")
         actions.forParaLLenar(species, setEspecies, "name")
         actions.forParaLLenar(starships, setStarships, "name")
         actions.forParaLLenar(vehicles, setVehicles, "name")
         actions.forParaLLenar(planets, setPlanets, "name")
-    }, [])
+    }, [store.detalleActual[store.llave]?.properties.url])
 
     return (
         <div>
@@ -35,8 +42,8 @@ const DetalleFilms = () => {
                     alt="..."
                 />
                 <div className="">
-                    <h1>{store.detalleActual[1].properties.title}</h1>
-                    <p className="">{store.detalleActual[1].properties.opening_crawl}</p>
+                    <h1>{store.detalleActual[store.llave].properties.title}</h1>
+                    <p className="">{store.detalleActual[store.llave].properties.opening_crawl}</p>
                 </div>
             </div>
             <div className="d-flex gap-3">
@@ -72,9 +79,9 @@ const DetalleFilms = () => {
                 </div>
                 <div>
                     <h2>Details</h2>
-                    <p className="nombre-personaje">{store.detalleActual[1].properties.director}</p>
-                    <p className="nombre-personaje">{store.detalleActual[1].properties.producer}</p>
-                    <p className="nombre-personaje">{store.detalleActual[1].properties.release_date}</p>
+                    <p className="nombre-personaje">{store.detalleActual[store.llave].properties.director}</p>
+                    <p className="nombre-personaje">{store.detalleActual[store.llave].properties.producer}</p>
+                    <p className="nombre-personaje">{store.detalleActual[store.llave].properties.release_date}</p>
                 </div>
             </div>
         </div>
