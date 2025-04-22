@@ -34,6 +34,7 @@ export const Home = () => {
 		 						{Object.entries(store[key])?.map((ele, index2) => (
 		 							<ElementoActual 
 									onClickIcono={()=>actions.guardarFavorito(ele[1] )}
+									detalle={ele[1]}
 									 title={ele[1]?.properties?.title || ele[1]?.name || "Sin título"}
 									 img={"https://placehold.co/300x200"}
 		 							className="card-item" 

@@ -10,10 +10,10 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
 
 
-const ElementoActual = ({ onClick, img, title, onClickIcono }) => {
+const ElementoActual = ({ onClick, img, title, onClickIcono, detalle }) => {
   const { store, actions } = useContext(Context);
-  const { index } = useParams();
-  const isFavorito = store.favoritos.some(fav =>
+  
+  const isFavorito = detalle && store.favoritos.some(fav =>
     (fav.url || fav.properties?.url) === (detalle.url || detalle.properties?.url)
   );
 
@@ -29,7 +29,10 @@ const ElementoActual = ({ onClick, img, title, onClickIcono }) => {
           <div className="d-flex justify-content-between">
             <a href="#" onClick={onClick} className="btn btn-primary">More details</a>
             <div onClick={onClickIcono}>
-              <FontAwesomeIcon icon={farHeart} size="2x" />
+              <FontAwesomeIcon 
+              icon={farHeart} 
+              size="2x" 
+              className={isFavorito ? "text-danger" : "text-secondary"} />
             </div>
           </div>
 
